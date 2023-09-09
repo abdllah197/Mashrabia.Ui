@@ -1,0 +1,48 @@
+<div class="fs-4 mt-4" style="color: white;">
+  <a (click)="close()">
+    <fa-icon [icon]="faXmark" [styles]="{color:'white'}"></fa-icon>
+  </a>
+</div>
+<div class="scroll-bar">
+  <div class="mt-2 row row-cols-1 row-cols-md-4 g-2" style="width: 50vw;">
+    <div class="col d-flex justify-content-start" *ngFor="let categoryItem of categoryItems |filterItems:searchItem; let i=index">
+      <div *ngIf="categoryItem.quantity==0" class="flex-shrink-0" style="width: 5%;border-radius: 5px 0px 0px 5px;" [style]="'background-color: '+categoryItem.color+';'"></div>
+      <div
+      *ngIf="categoryItem.quantity>0;else itemCard"
+      class="flex-grow-1 card h-100"
+      [style]="'border-radius: 5px 5px 5px 5px;background-color:'+categoryItem.color+';color:black'">
+        <div class="card-body">
+          <h5 class="card-title">{{categoryItem|translateApi}}</h5>
+          <div class="d-flex">
+            <p class="card-text">{{categoryItem.price|arabicNumbers}}</p>
+            <ng-container *ngIf="lang=='en';else currency">
+              <p class="card-text">EGP</p>
+            </ng-container>
+          </div>
+          <app-quantity [item]="categoryItem"></app-quantity>
+        </div>
+      </div>
+      <ng-template #itemCard>
+        <div
+          class="flex-grow-1 card h-100"
+          [style]="'border-radius: 0px 5px 5px 0px; background-color: #2d2d2d; color: white'">
+          <div class="card-body" style="color:white;">
+            <h5 class="card-title">{{categoryItem|translateApi}}</h5>
+            <div class="d-flex">
+              <p class="card-text">{{categoryItem.price|arabicNumbers}}</p>
+              <ng-container *ngIf="lang=='en';else currency">
+                <p class="card-text">EGP</p>
+              </ng-container>
+            </div>
+            <app-quantity [item]="categoryItem"></app-quantity>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #currency>
+        <p class="card-text">ج.م</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+

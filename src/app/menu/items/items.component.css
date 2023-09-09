@@ -1,0 +1,15 @@
+a{
+  color: inherit;
+}
+a:hover{
+  cursor: pointer;
+}
+.scroll-bar {
+  height:42vh;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+

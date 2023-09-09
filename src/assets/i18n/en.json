@@ -1,0 +1,14 @@
+{
+  "search":{"searchPlaceholder": "Search Somthing..."},
+  "category":{
+    "all":"all",
+    "item":"Item"
+  },
+  "order":{
+    "subTotal":"SubTotal",
+    "total":"Total",
+    "tax":"Tax14%",
+    "placeOrder":"PlaceOrder"
+  }
+
+}

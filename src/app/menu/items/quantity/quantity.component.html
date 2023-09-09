@@ -1,0 +1,5 @@
+<div class="quantity d-flex justify-content-end">
+  <a (click)="minus()" class="quantity__minus"><i class="bi bi-dash-square"></i></a>
+  <input disabled name="quantity" type="text" class="quantity__input" [value]="itemQuantity.value|arabicNumbers">
+  <a (click)="plus()" class="quantity__plus"><i class="bi bi-plus-square"></i></a>
+</div>

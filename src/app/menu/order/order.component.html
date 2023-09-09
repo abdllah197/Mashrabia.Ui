@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-end">
+  <div class="d-flex flex-column " style="max-height: 93vh;">
+    <div #scrollMe [@inOutAnimation]="(orders.value.length>0)?'open':'closed'"  class="scroll-order">
+      <div [@showHideAnimation]="'in'" *ngFor="let order of orders.value;let i=index" class="d-flex justify-content-between p-3 mb-2 rounded border border-secondary border-1 order">
+        <div class="d-flex">
+          <div class="quantity m-2">{{i+1|arabicNumbers}}</div>
+          <div class="m-2">{{order|translateApi}}</div>
+
+          <ng-container *ngIf="lang=='en';else quantity">
+            <div class="mt-2 mb-2 ml-1" style="color: #ababab;"> x{{order.quantity|arabicNumbers}}</div>
+          </ng-container>
+          <ng-template #quantity>
+            <div class="mt-2 mb-2 ml-1" style="color: #ababab;"> {{order.quantity|arabicNumbers}}x</div>
+          </ng-template>
+        </div>
+        <ng-container *ngIf="lang=='en';else dateArabic">
+          <div class="m-2">{{order.date|date:'dd/MM/yyyy hh:mm aa'}}</div>
+        </ng-container>
+        <ng-template #dateArabic>
+          <div class="m-2">{{order.date|arabicDate}}</div>
+        </ng-template>
+
+        <div class="m-2 d-flex">
+          <div>{{order.price*order.quantity|arabicNumbers}}</div>
+          <ng-container *ngIf="lang=='en';else currency">
+            <div style="margin-left: 5px;">EGP</div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div [ngStyle]="{'margin-top':(orders.value.length>0)?'15px':'0px'}" class="d-flex flex-column align-items-center rounded border border-secondary border-1 order total-order">
+      <div class="d-flex justify-content-between m-2" style="width: 80%;">
+        <div class="m-2">{{'order.subTotal'|translate}}</div>
+        <div class="m-2 d-flex">
+          <div>{{totalPrice|arabicNumbers}}</div>
+          <ng-container *ngIf="lang=='en';else currency">
+            <div style="margin-left: 5px;">EGP</div>
+          </ng-container>
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-between m-2" style="width: 80%;">
+        <div class="m-2">{{'order.tax'|translate}}</div>
+        <div class="m-2 d-flex">
+          <div>{{totalPrice*0.14 |arabicNumbers}}</div>
+        <ng-container *ngIf="lang=='en';else currency">
+          <div style="margin-left: 5px;">EGP</div>
+        </ng-container>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between m-2 total" style="width: 80%;">
+        <div class="m-2">{{'order.total'|translate}}</div>
+        <div class="m-2 d-flex">
+          <div>{{(totalPrice +(totalPrice*0.14)) | arabicNumbers}}</div>
+        <ng-container *ngIf="lang=='en';else currency">
+          <div style="margin-left: 5px;">EGP</div>
+        </ng-container>
+        </div>
+      </div>
+      <button class="mt-auto place-order m-2 w-75 p-2">{{'order.placeOrder'|translate}}</button>
+    </div>
+    <ng-template #currency>
+      <div style="margin-right: 5px;">ج.م</div>
+    </ng-template>
+  </div>
+</div>

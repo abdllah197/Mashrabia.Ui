@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-between">
+  <div class="m-4" style="width: 55vw;">
+    <app-search (searchItemEvent)="getSearchText($event)" [searchItem]="searchText"></app-search>
+    <app-category [searchText]="searchText" (categoryIdEvent)="getCategoryId($event)" (itemHideEvent)="setHideState($event)">
+      <app-items [hidden]="!hideState" [searchItem]="searchText" (itemCloseEvent)="hideComponent()" [categoryId]="categoryId"></app-items>
+    </app-category>
+  </div>
+  <!-- <button (click)="changeLang()">language</button> -->
+  <div class="m-4" style="width: 40vw;">
+    <app-order></app-order>
+  </div>
+</div>

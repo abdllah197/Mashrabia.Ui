@@ -1,0 +1,44 @@
+<div class="">
+  <div class="row row-cols-1 row-cols-md-4 g-2" >
+    <div class="col">
+      <a class="text-decoration-none" (click)="GetAllItems()">
+        <div class="card h-100" [style]="'background-color: white;'">
+          <fa-icon class="m-2" [icon]="faInfinity" [styles]="{color:'black'}"></fa-icon>
+          <div class="card-body">
+            <h5 class="card-title">{{'category.all'|translate}}</h5>
+              <div class="d-flex justify-content-between" style="color: gray;">
+                <p class="card-text" style="color: gray;">{{GetAllItemsCount()}} {{'category.item'|translate}}</p>
+                <ng-container *ngIf="lang=='en';else arrowLeft">
+                  <i class="bi bi-arrow-right"></i>
+                </ng-container>
+              </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <ng-container *ngIf="searchText==''">
+      <div class="col" *ngFor="let category of categories.value">
+        <a class="text-decoration-none" (click)="GetSelectedCategoryItems(category.id)">
+          <div class="card h-100" [style]="'background-color: '+category.color+';'">
+            <fa-icon class="m-2" [icon]="category.setIcon" [styles]="{color:'black'}"></fa-icon>
+            <div class="card-body">
+              <h5 class="card-title">{{category|translateApi}}</h5>
+                <div class="d-flex justify-content-between" style="color: gray;">
+                  <p class="card-text" style="color: gray;">{{categoryItemsCount(category.id)}} {{'category.item'|translate}}</p>
+                  <ng-container *ngIf="lang=='en';else arrowLeft">
+                    <i class="bi bi-arrow-right"></i>
+                  </ng-container>
+                </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #arrowLeft>
+    <i class="bi bi-arrow-left"></i>
+  </ng-template>
+</div>
+<div>
+  <ng-content></ng-content>
+</div>

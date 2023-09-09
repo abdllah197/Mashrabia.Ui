@@ -1,0 +1,14 @@
+{
+  "search":{"searchPlaceholder": "ابحث عن شئ..."},
+  "category":{
+    "all":"كل",
+    "item":"صنف"
+  },
+  "order":{
+    "subTotal":"المجموع الفرعى",
+    "total":"الاجمالى",
+    "tax":"الضريبة ١٤%",
+    "placeOrder":"اضافة طلب"
+  }
+
+}

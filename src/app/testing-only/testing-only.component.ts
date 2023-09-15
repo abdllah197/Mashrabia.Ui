@@ -1,11 +1,13 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
+  standalone:true,
   selector: 'app-testing-only',
   templateUrl: './testing-only.component.html',
-  styleUrls: ['./testing-only.component.css']
+  styleUrls: ['./testing-only.component.scss'],
+  imports:[NgbDatepickerModule],
 })
 export class TestingOnlyComponent {
 

@@ -1,10 +1,24 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
+import { SearchComponent } from './search/search.component';
+import { CategoryComponent } from './category/category.component';
+import { ItemsComponent } from './items/items.component';
+import { OrderComponent } from './order/order.component';
+import { CategoriesService } from '../core/services/categories-service/categories.service';
+import { ItemsService } from '../core/services/items-service/items.service';
+import { OrdersService } from '../core/services/orders-service/orders.service';
 
 @Component({
+  standalone:true,
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css'],
+  styleUrls: ['./menu.component.scss'],
+  imports:[
+    SearchComponent,
+    CategoryComponent,
+    ItemsComponent,
+    OrderComponent],
+  providers:[CategoriesService,ItemsService,OrdersService]
 })
 export class MenuComponent {
   lang:string;

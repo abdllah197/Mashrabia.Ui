@@ -1,13 +1,14 @@
 import { TranslateService } from '@ngx-translate/core';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 
 @Pipe({
+  standalone:true,
   name: 'arabicNumbers',
 
 })
 export class ArabicNumbersPipe implements PipeTransform {
-  constructor(private translateService:TranslateService){
-  }
+  translateService:TranslateService=inject(TranslateService);
+
   transform(n: number): string {
     if(this.translateService.currentLang=='ar'){
       if (n === null || n === undefined) {

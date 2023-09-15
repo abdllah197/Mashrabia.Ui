@@ -6,11 +6,25 @@ import {faSearch,faXmark} from '@fortawesome/free-solid-svg-icons';
 import { ItemDTO } from 'src/app/shared/models/item/ItemDTO';
 import { TranslateService } from '@ngx-translate/core';
 import { OrderDTO } from 'src/app/shared/models/order/OrderDTO';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
+import { QuantityComponent } from './quantity/quantity.component';
+import { TranslateApiPipe } from 'src/app/shared/pipes/translate-api.pipe';
+import { ArabicNumbersPipe } from 'src/app/shared/pipes/arabic-numbers.pipe';
+import { FilterItemsPipe } from 'src/app/shared/pipes/filter-items.pipe';
 
 @Component({
+  standalone:true,
   selector: 'app-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.css']
+  styleUrls: ['./items.component.scss'],
+  imports:[
+    CommonModule,
+    FontAwesomeModule,
+    QuantityComponent,
+    TranslateApiPipe,
+    ArabicNumbersPipe,
+    FilterItemsPipe],
 })
 export class ItemsComponent implements OnChanges,OnInit{
   faSearch=faSearch;

@@ -2,11 +2,14 @@ import { ItemDTO } from '../../../shared/models/item/ItemDTO';
 import { OrdersService } from 'src/app/core/services/orders-service/orders.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { ArabicNumbersPipe } from 'src/app/shared/pipes/arabic-numbers.pipe';
 
 @Component({
+  standalone:true,
   selector: 'app-quantity',
   templateUrl: './quantity.component.html',
-  styleUrls: ['./quantity.component.css'],
+  styleUrls: ['./quantity.component.scss'],
+  imports:[ArabicNumbersPipe]
 })
 
 export class QuantityComponent implements OnInit{

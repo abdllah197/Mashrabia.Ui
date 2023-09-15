@@ -1,13 +1,12 @@
 import { TranslateService } from '@ngx-translate/core';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 
 @Pipe({
+  standalone:true,
   name: 'filterItems'
 })
 export class FilterItemsPipe implements PipeTransform {
-  constructor(private translateService:TranslateService){
-
-  }
+  translateService:TranslateService=inject(TranslateService);
 
   transform(items: any[], searchText: string): any[] {
     if (searchText == "") return items;

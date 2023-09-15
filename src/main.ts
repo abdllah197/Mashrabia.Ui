@@ -1,9 +1,25 @@
 /// <reference types="@angular/localize" />
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {enableProdMode} from '@angular/core';
+import { environment } from './environments/environment';
+import {bootstrapApplication} from "@angular/platform-browser";
+import {AppComponent} from "./app/app.component";
+import { provideRouter} from "@angular/router";
+import { routes } from './app/app-routing.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { AppModule } from './app/app.module';
 
+if (environment.production) {
+  enableProdMode();
+}
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers:[
+      provideRouter(routes),
+      provideAnimations(),
+      TranslateModule
+  ]
+
+})
+.catch(err => console.error(err));

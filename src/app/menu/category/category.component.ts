@@ -5,10 +5,20 @@ import { ItemsService } from 'src/app/core/services/items-service/items.service'
 import {faInfinity} from '@fortawesome/free-solid-svg-icons';
 import { CategoryDTO } from 'src/app/shared/models/category/CategoryDTO'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxTranslateModule } from 'src/app/shared/modules/translate/translate.module';
+import { TranslateApiPipe } from 'src/app/shared/pipes/translate-api.pipe';
+import { CommonModule } from '@angular/common';
 @Component({
+  standalone:true,
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.scss'],
+  imports:[
+    FontAwesomeModule,
+    NgxTranslateModule,
+    TranslateApiPipe,
+    CommonModule],
 })
 export class CategoryComponent implements OnInit{
   faInfinity=faInfinity;

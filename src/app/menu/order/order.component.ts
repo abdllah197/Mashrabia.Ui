@@ -4,14 +4,26 @@ import { Component, AfterContentChecked, ElementRef, ViewChild, AfterViewChecked
 import { inOutAnimation ,showHideAnimation} from 'src/app/animation';
 import { OrderDTO } from 'src/app/shared/models/order/OrderDTO';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { TranslateApiPipe } from 'src/app/shared/pipes/translate-api.pipe';
+import { CommonModule } from '@angular/common';
+import { NgxTranslateModule } from 'src/app/shared/modules/translate/translate.module';
+import { ArabicDatePipe } from 'src/app/shared/pipes/arabic-date.pipe';
+import { ArabicNumbersPipe } from 'src/app/shared/pipes/arabic-numbers.pipe';
 
 @Component({
+  standalone:true,
   selector: 'app-order',
   templateUrl: './order.component.html',
   animations: [
     inOutAnimation,showHideAnimation
   ],
-  styleUrls: ['./order.component.css']
+  styleUrls: ['./order.component.scss'],
+  imports:[
+    CommonModule,
+    TranslateApiPipe,
+    NgxTranslateModule,
+    ArabicDatePipe,
+    ArabicNumbersPipe],
 })
 export class OrderComponent implements AfterContentChecked ,AfterViewChecked{
   hide:boolean=true;
